@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#100e17">
+  <meta name="description" content="CoffeeCat Studio - محرر فيديو إبداعي">
+  <title>CoffeeCat Studio v1.7</title>
+  <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap');
+:root{color-scheme:dark;--bg:#0c0b12;--panel:#14121d;--panel2:#191622;--line:#2b2638;--muted:#81798f;--text:#f3effb;--purple:#925df2;--purple2:#b99aff;--gold:#e5a767}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:radial-gradient(ellipse at 55% -20%,#2b1b3c 0,transparent 45%),var(--bg);color:var(--text);font-family:'Cairo',system-ui,sans-serif}button,input{font:inherit}button{cursor:pointer}button:disabled{opacity:.38;cursor:not-allowed}.app-shell{max-width:1700px;min-height:100vh;margin:auto;display:flex;flex-direction:column;background:#100e17;border:1px solid #211c2c;box-shadow:0 20px 90px #0007}.topbar{height:76px;display:flex;align-items:center;gap:22px;padding:0 24px;border-bottom:1px solid var(--line);background:#13111b}.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit;min-width:220px}.brand-icon{width:48px;height:48px;border-radius:15px;background:linear-gradient(140deg,#4a2b5e,#37251e);display:grid;place-items:center;border:1px solid #5d456b}.brand-icon svg{width:41px}.brand-word{font-size:23px;font-weight:800;line-height:1.05;letter-spacing:-.7px}.brand-word>span{color:var(--gold)}.brand-word small{display:block;font-size:8px;letter-spacing:1.7px;color:#92869f;font-weight:600;margin-top:6px}.project-meta{display:flex;align-items:center;gap:10px;color:#c7bfd4;font-size:12px;flex:1;min-width:0}.live-dot,.status-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#66d4a4;box-shadow:0 0 12px #66d4a466}.project-name{color:#8d849c;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:35vw;border-right:1px solid #393244;padding-right:13px}.top-actions{display:flex;gap:9px}.button{border:1px solid transparent;border-radius:10px;padding:10px 17px;font-size:12px;font-weight:700;transition:.15s}.button-primary{background:linear-gradient(135deg,#9b65f5,#713bd2);color:#fff;box-shadow:0 5px 18px #7842ce35}.button-primary:hover{filter:brightness(1.1)}.button-quiet{background:#201b2c;border-color:#383044;color:#c4bbd3}.workspace{display:grid;grid-template-columns:84px minmax(360px,1fr) 330px;flex:1;min-height:0}.rail{padding:18px 9px;background:#12101a;border-left:1px solid var(--line);display:flex;flex-direction:column;gap:8px}.rail-button{background:transparent;border:1px solid transparent;border-radius:11px;color:#948ba5;display:flex;flex-direction:column;align-items:center;gap:5px;padding:12px 2px;font-size:10px}.rail-button span{font-size:22px;line-height:1.2}.rail-button.active,.rail-button:hover{background:#2a203b;border-color:#4b3765;color:#d4bfff}.editor-column{padding:22px 24px 25px;min-width:0;display:flex;flex-direction:column;gap:13px}.section-head,.transport,.timeline-heading{display:flex;align-items:center;justify-content:space-between}.section-head{font-size:12px}.pill{display:inline-block;border-radius:6px;background:#2a203d;color:#d1baff;padding:4px 10px;margin-left:9px}.muted{color:var(--muted);font-size:11px}.icon-button{border:1px solid #332c43;background:#1c1828;color:#bcb0d0;border-radius:8px;width:34px;height:34px;display:inline-grid;place-items:center;font-size:19px}.icon-button:hover{border-color:#8060a9;color:#e1d4fa}.preview-frame{width:100%;aspect-ratio:16/9;min-height:220px;max-height:min(48vh,580px);background:#07060b;border:1px solid #2c2638;border-radius:14px;overflow:hidden;display:flex;align-items:center;justify-content:center}.preview-inner{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center}.preview-inner video{display:none;width:100%;height:100%;object-fit:contain;background:#050509}.preview-inner.loaded video{display:block}.empty-state{display:flex;flex-direction:column;align-items:center;text-align:center;padding:20px}.preview-inner.loaded .empty-state{display:none}.empty-mark{width:82px;height:78px;border-radius:24px;display:grid;place-items:center;position:relative;background:linear-gradient(145deg,#402656,#563523);color:#f4bc7c;font-size:37px}.empty-mark b{position:absolute;font-size:23px;bottom:0;right:1px;color:#ffe3c4}.empty-state h1{font-size:21px;margin:13px 0 2px}.empty-state p{font-size:12px;color:#92899f;margin:0 0 15px}.empty-state small{font-size:10px;color:#70687f;margin-top:10px}.overlay-preview{position:absolute;left:50%;top:85%;transform:translate(-50%,-50%);width:90%;text-align:center;color:white;font-size:clamp(18px,3vw,38px);font-weight:800;text-shadow:0 2px 7px #000,0 0 3px #000;pointer-events:none;overflow-wrap:anywhere}.transport{height:34px}.timecode{font-size:12px;color:#8b829d;direction:ltr}.timecode b{color:#d2baff}.timecode>span{margin-left:7px}.play-button{width:38px;height:38px;border:0;border-radius:50%;background:var(--purple);color:white;display:grid;place-items:center;font-size:15px;box-shadow:0 5px 18px #8e59f044}.transport-actions{display:flex;gap:6px}.seekbar{width:100%;height:5px;accent-color:#ac83ff;cursor:pointer}.timeline{margin-top:7px;border:1px solid #30293c;background:#14111d;border-radius:13px;padding:14px;min-height:210px}.timeline-heading{margin-bottom:4px}.timeline-heading>div{display:flex;gap:12px;align-items:center;font-size:13px}.timeline-heading strong{font-weight:700}.ruler{display:flex;justify-content:space-between;margin:12px 0 7px 86px;color:#6d657d;font-size:9px;direction:ltr}.track{display:grid;grid-template-columns:76px minmax(0,1fr);gap:10px;margin-bottom:9px;min-height:43px}.track-label{display:flex;align-items:center;color:#9a91a9;font-size:10px}.track-body{min-width:0;position:relative;background:#0c0a12;border:1px solid #292333;border-radius:7px;overflow:hidden;display:flex;align-items:stretch;min-height:40px}.empty-track{width:100%;display:grid;place-items:center;color:#6d647c;font-size:10px;cursor:pointer}.video-clip{width:100%;position:relative;overflow:hidden;background:linear-gradient(90deg,#493065,#875c83,#d48d5b);min-height:42px}.video-clip video{width:100%;height:100%;position:absolute;inset:0;object-fit:cover;opacity:.45}.video-clip span{position:absolute;inset:0;display:flex;align-items:center;padding:0 10px;font-size:10px;color:white;text-shadow:0 1px 5px #000;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.text-track,.audio-track{font-size:10px;display:flex;align-items:center;padding:0 11px;width:100%;min-height:36px;color:#c9b3f3}.text-track{background:linear-gradient(90deg,#6746a5,#9b69e1)}.audio-track{background:repeating-linear-gradient(90deg,#105c60,#105c60 3px,#177a7a 3px,#177a7a 5px);color:#c1fff0}.trim-row{display:grid;grid-template-columns:auto minmax(55px,1fr) auto minmax(55px,1fr);align-items:center;gap:10px;margin-top:12px;font-size:10px;color:#aaa1b8}.trim-row label{white-space:nowrap}.trim-row b{color:#c8adff;direction:ltr;display:inline-block}.trim-row input{width:100%;accent-color:#a47aff;min-width:0}.inspector{background:#13111b;border-right:1px solid var(--line);display:flex;flex-direction:column;min-width:0}.inspector-tabs{height:61px;display:flex;gap:4px;padding:0 13px;border-bottom:1px solid #2c2638}.inspector-tabs button{flex:1;background:transparent;border:0;color:#92889f;font-size:12px;font-weight:700;position:relative}.inspector-tabs button.selected{color:#d6c4ff}.inspector-tabs button.selected:after{content:"";position:absolute;bottom:0;left:13%;right:13%;height:2px;background:#ad86ff;border-radius:3px}.panel-content{padding:20px 17px;flex:1;overflow:auto}.panel-title{display:flex;align-items:center;gap:9px;font-size:15px;font-weight:800}.panel-title span{color:#c3a4ff;font-size:19px}.panel-desc{font-size:11px;color:#898097;line-height:1.9;margin:6px 0 17px}.filter-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.filter-card{position:relative;display:flex;flex-direction:column;gap:7px;text-align:right;border:1px solid #342d43;background:#1a1724;color:#c8bfd7;padding:7px;border-radius:10px;font-size:11px;font-weight:700}.filter-card.selected{border-color:#a77cff;background:#2b2040;box-shadow:0 0 0 1px #a77cff24}.filter-thumb{height:70px;border-radius:6px;display:grid;place-items:center;font-size:25px;color:#ffffff9c;background:linear-gradient(135deg,#27263f,#b9825c)}.filter-0{background:linear-gradient(135deg,#26283b,#69647e)}.filter-1{background:linear-gradient(135deg,#1b1d40,#df8a58)}.filter-2{background:linear-gradient(135deg,#7b4b2b,#e8b77d)}.filter-3{background:linear-gradient(135deg,#254b69,#9bb9cc)}.filter-4{background:linear-gradient(135deg,#584038,#b6a078)}.filter-5{background:linear-gradient(135deg,#444,#aaa)}.filter-6{background:linear-gradient(135deg,#9674cb,#e5b4db)}.filter-7{background:linear-gradient(135deg,#08080b,#4e4b5a)}.selected-mark{position:absolute;left:10px;top:8px;color:#d6c1ff}.effect-list{display:flex;flex-direction:column;gap:9px}.effect-row{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid #342d43;background:#1b1825;border-radius:10px;color:#d2c9df;text-align:right;width:100%}.effect-icon{width:42px;height:42px;display:grid;place-items:center;background:#312343;border-radius:9px;font-size:21px}.effect-row span:nth-child(2){flex:1}.effect-row b,.effect-row small{display:block}.effect-row b{font-size:12px}.effect-row small{font-size:10px;color:#8d839b}.control{margin:20px 0}.control>div{display:flex;justify-content:space-between;margin-bottom:8px;font-size:12px}.control label{color:#c9c0d6}.control b{color:#c3a4ff;font-size:11px;direction:ltr}.control input{width:100%;accent-color:#a47aff}.text-field{width:100%;background:#0d0b13;color:#fff;border:1px solid #40364f;border-radius:9px;padding:12px;outline:none;font-size:13px}.text-field:focus{border-color:#a47aff}.presets{display:flex;flex-direction:column;gap:8px;margin-top:13px}.presets button,.reset-control{background:#211b2e;border:1px solid #393048;color:#d0c0eb;border-radius:8px;padding:9px;text-align:right;font-size:12px}.reset-control{width:100%;text-align:center;margin-top:12px}.select-field{width:100%;padding:10px;background:#211b2e;color:#ddd;border:1px solid #393048;border-radius:8px}.notice{margin-top:14px;padding:11px;border-radius:9px;background:#2b213b;border:1px solid #594277;color:#e1d0ff;font-size:11px;line-height:1.8}.inspector-footer{padding:15px 17px 18px;border-top:1px solid #2c2638}.export-summary{display:flex;align-items:center;gap:9px;font-size:11px;color:#b4a9c6;margin-bottom:12px}.export-summary>span:first-child{font-size:20px;color:#c0a1ff}.export-summary b{margin-right:auto;font-size:9px;font-weight:600;color:#9186a5;background:#282233;padding:4px 7px;border-radius:5px}.wide{width:100%;padding:12px}.inspector-footer>small{display:block;text-align:center;color:#776e88;font-size:9px;margin-top:9px}.statusbar{height:37px;border-top:1px solid #292334;background:#100e16;display:flex;align-items:center;justify-content:space-between;padding:0 19px;color:#786f87;font-size:10px}.statusbar span:first-child{display:flex;align-items:center;gap:8px}.toast{position:fixed;bottom:48px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;z-index:10;background:#2d2240;border:1px solid #5d467a;color:#f0e7ff;border-radius:12px;padding:12px 18px;font-size:12px;max-width:90vw;transition:.2s;box-shadow:0 10px 35px #0008}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:1120px){.workspace{grid-template-columns:72px minmax(0,1fr) 290px}.editor-column{padding:18px 15px}.topbar{padding:0 15px}.brand{min-width:185px}.preview-frame{min-height:200px}}
+@media(max-width:800px){.topbar{height:auto;min-height:66px;flex-wrap:wrap;padding:10px 12px;gap:10px}.brand{min-width:0;flex:1}.brand-icon{width:40px;height:40px}.brand-word{font-size:20px}.project-meta{order:3;flex-basis:100%;font-size:10px}.project-name{max-width:55vw}.top-actions{gap:5px}.button{padding:9px 11px;font-size:10px}.workspace{grid-template-columns:56px minmax(0,1fr)}.rail{padding:10px 4px;gap:5px}.rail-button{font-size:9px;padding:10px 0}.rail-button span{font-size:19px}.editor-column{padding:13px 10px}.inspector{grid-column:1/-1;border-right:0;border-top:1px solid var(--line)}.inspector-tabs{height:49px}.panel-content{padding:16px}.filter-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.filter-thumb{height:52px}.preview-frame{min-height:170px;max-height:45vh}.timeline{padding:10px 8px}.track{grid-template-columns:55px minmax(0,1fr);gap:6px}.ruler{margin-right:0;margin-left:60px;font-size:8px}.trim-row{grid-template-columns:auto minmax(40px,1fr);gap:7px}.statusbar{font-size:8px;padding:0 9px}.statusbar span:last-child{display:none}}
+@media(max-width:430px){.brand-word{font-size:18px}.brand-word small{font-size:7px}.top-actions .button-quiet{display:none}.filter-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.filter-thumb{height:62px}.preview-frame{min-height:155px}.empty-state h1{font-size:17px}.empty-state p{font-size:10px}.timeline-heading strong{font-size:11px}.track-label{font-size:9px}.trim-row{font-size:9px}}
+
+  
+.export-summary{position:relative}.text-field + .control{margin-top:16px}.panel-content .control input[type=range]{touch-action:pan-y}.exporting-note{font-size:10px;color:#c8b4ea;text-align:center;margin-top:6px}
+
+</style>
+</head>
+<body>
+<div class="app-shell">
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="CoffeeCat">
+      <span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M12 24h35v20a13 13 0 0 1-13 13H25A13 13 0 0 1 12 44z" fill="#c77d42" stroke="#f4d1a3" stroke-width="2.5"/><path d="M47 29h5a8 8 0 0 1 0 16h-6" fill="none" stroke="#f4d1a3" stroke-width="5"/><path d="M23 18c-7-9 5-10 2-17M35 18c-7-9 5-10 2-17" fill="none" stroke="#f0b36c" stroke-linecap="round" stroke-width="4"/><path d="M27 37l4-4 4 4M25 43h.1M37 43h.1" stroke="#2b1b16" stroke-width="4" stroke-linecap="round"/><path d="M31 47q4-5 8 0" fill="none" stroke="#2b1b16" stroke-width="2.5" stroke-linecap="round"/></svg></span>
+      <span class="brand-word">Coffee<span>Cat</span><small>CREATIVE VIDEO STUDIO</small></span>
+    </a>
+    <div class="project-meta"><span class="live-dot"></span><span>مشروع جديد</span><span class="project-name" id="projectName">Untitled Project</span></div>
+    <div class="top-actions"><button class="button button-quiet" id="resetBtn" title="إعادة الضبط">إعادة الضبط</button><button class="button button-primary" id="exportBtn" disabled>⇩ تصدير الفيديو</button></div>
+  </header>
+
+  <main class="workspace">
+    <nav class="rail" aria-label="أدوات التحرير">
+      <button class="rail-button active" data-panel="Media"><span>▧</span>الوسائط</button>
+      <button class="rail-button" data-panel="Audio"><span>♫</span>الصوت</button>
+      <button class="rail-button" data-panel="Text"><span>T</span>النصوص</button>
+      <button class="rail-button" data-panel="Effects"><span>✦</span>التأثيرات</button>
+      <button class="rail-button" data-panel="Filters"><span>◐</span>الفلاتر</button>
+      <button class="rail-button" data-panel="Adjust"><span>☷</span>الضبط</button>
+      <button class="rail-button" data-panel="Trim"><span>⌁</span>القص</button>
+    </nav>
+
+    <section class="editor-column">
+      <div class="section-head"><div><span class="pill">معاينة مباشرة</span><span class="muted" id="resolution">ارفع فيديو للبدء</span></div><button class="icon-button" id="fitBtn" title="إعادة ضبط المعاينة">⟳</button></div>
+      <div class="preview-frame">
+        <div class="preview-inner" id="previewInner">
+          <video id="video" playsinline preload="metadata"></video>
+          <div class="empty-state" id="emptyState">
+            <div class="empty-mark"><span>☕</span><b>🐾</b></div>
+            <h1>كل فيديو له حكاية ✨</h1>
+            <p>ارفع فيديو وابدأ رحلة المونتاج مع CoffeeCat</p>
+            <button class="button button-primary" id="uploadMain">＋ اختار فيديو</button>
+            <small>MP4 · MOV · WebM حسب دعم المتصفح</small>
+          </div>
+          <div class="overlay-preview" id="overlayPreview"></div>
+        </div>
+      </div>
+      <div class="transport">
+        <div class="timecode"><b id="currentTime">00:00</b><span>/ <span id="totalTime">00:00</span></span></div>
+        <button class="play-button" id="playBtn" disabled aria-label="تشغيل">▶</button>
+        <div class="transport-actions"><button class="icon-button" id="muteBtn" disabled title="كتم الصوت">♫</button><button class="icon-button" id="backBtn" disabled title="الرجوع للبداية">↶</button></div>
+      </div>
+      <input class="seekbar" id="seek" type="range" min="0" max="100" value="0" step="0.01" disabled aria-label="موضع الفيديو">
+
+      <section class="timeline">
+        <div class="timeline-heading"><div><strong>▤ الخط الزمني</strong><span class="muted">Timeline</span></div><button class="icon-button" id="addMedia" title="إضافة فيديو">＋</button></div>
+        <div class="ruler"><span>00:00</span><span id="rulerQuarter">00:00</span><span id="rulerHalf">00:00</span><span id="rulerThree">00:00</span><span id="rulerEnd">00:00</span></div>
+        <div class="track"><div class="track-label">▣ الفيديو</div><div class="track-body" id="videoTrack"><div class="empty-track" id="emptyTrack">＋ أضف فيديو للتايم لاين</div></div></div>
+        <div class="track"><div class="track-label">T النص</div><div class="track-body"><div class="text-track" id="textTrack">أضف عنوانًا من لوحة النصوص</div></div></div>
+        <div class="track"><div class="track-label">♫ الصوت</div><div class="track-body"><div class="audio-track" id="audioTrack">مسار صوت الفيديو</div></div></div>
+        <div class="trim-row"><label for="trimStart">بداية القص <b id="startLabel">00:00</b></label><input id="trimStart" type="range" min="0" max="100" value="0" step=".05" disabled><label for="trimEnd">نهاية القص <b id="endLabel">00:00</b></label><input id="trimEnd" type="range" min="0" max="100" value="100" step=".05" disabled></div>
+      </section>
+    </section>
+
+    <aside class="inspector">
+      <div class="inspector-tabs" id="panelTabs">
+        <button class="selected" data-panel="Filters">الفلاتر</button><button data-panel="Effects">التأثيرات</button><button data-panel="Adjust">الضبط</button>
+      </div>
+      <div class="panel-content" id="panelContent"></div>
+      <div class="inspector-footer"><div class="export-summary"><span>⇧</span><span>جاهز للتصدير</span><b>WEBM</b></div><button class="button button-primary wide" id="exportSide" disabled>⇩ تصدير الفيديو</button><small>جودة التصدير تعتمد على المتصفح والجهاز</small></div>
+    </aside>
+  </main>
+  <footer class="statusbar"><span><i class="status-dot"></i> CoffeeCat جاهز للإبداع</span><span id="statusMessage">ابدأ برفع فيديو من جهازك</span><span>☕ صُنع بحب من CoffeeCat</span></footer>
+</div>
+<input type="file" id="fileInput" accept="video/*" hidden>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>(() => {
+'use strict';
+const $ = id => document.getElementById(id);
+const video = $('video'), fileInput = $('fileInput'), previewInner = $('previewInner');
+const state = {file:null,url:'',duration:0,start:0,end:0,filter:'Original',brightness:100,contrast:100,saturation:100,speed:1,muted:false,text:'',textX:50,textY:85,textSize:4.5,panel:'Filters',exporting:false,raf:0,toastTimer:0};
+const filters = {
+  Original:{css:'none',name:'أصلي'}, Cinematic:{css:'contrast(1.15) saturate(1.18) sepia(.08)',name:'سينمائي'},
+  Warm:{css:'sepia(.22) saturate(1.25)',name:'دافئ'}, Cool:{css:'hue-rotate(15deg) saturate(.9)',name:'بارد'},
+  Vintage:{css:'sepia(.35) contrast(1.08) saturate(.8)',name:'قديم'}, Mono:{css:'grayscale(1)',name:'أبيض وأسود'},
+  Dream:{css:'saturate(1.4) brightness(1.08)',name:'حالم'}, Noir:{css:'grayscale(1) contrast(1.4)',name:'Noir'}
+};
+const filterNames = Object.keys(filters);
+const cssFilter = () => `${filters[state.filter]?.css || 'none'} brightness(${state.brightness}%) contrast(${state.contrast}%) saturate(${state.saturation}%)`;
+const fmt = s => { if(!Number.isFinite(s)||s<0)s=0; return `${Math.floor(s/60).toString().padStart(2,'0')}:${Math.floor(s%60).toString().padStart(2,'0')}`; };
+function toast(message){const el=$('toast');el.textContent=message;el.classList.add('show');clearTimeout(state.toastTimer);state.toastTimer=setTimeout(()=>el.classList.remove('show'),3600);$('statusMessage').textContent=message;}
+function canEdit(){if(state.exporting){toast('استنى التصدير يخلص الأول.');return false;}if(state.file&&!video.paused){toast('مينفعش تعدّل أثناء تشغيل الفيديو. وقف الفيديو الأول وبعدها عدّل.');return false;}return true;}
+function setPanel(panel){state.panel=panel;document.querySelectorAll('[data-panel]').forEach(b=>b.classList.toggle('active',b.dataset.panel===panel));document.querySelectorAll('#panelTabs button').forEach(b=>b.classList.toggle('selected',b.dataset.panel===panel));renderPanel();}
+function setReady(ready){['exportBtn','exportSide','playBtn','muteBtn','backBtn','seek','trimStart','trimEnd'].forEach(id=>$(id).disabled=!ready);}
+function chooseFile(file){
+  if(!file)return;
+  if(!file.type.startsWith('video/')&&!/\.(mp4|m4v|mov|webm|mkv|avi|3gp|ogv)$/i.test(file.name)){toast('من فضلك اختار ملف فيديو صالح.');return;}
+  if(state.url)URL.revokeObjectURL(state.url);
+  state.file=file;state.url=URL.createObjectURL(file);state.start=0;state.end=0;state.duration=0;state.filter='Original';state.brightness=100;state.contrast=100;state.saturation=100;state.speed=1;state.muted=false;state.text='';state.textX=50;state.textY=85;state.textSize=3.2;state.textX=50;state.textY=85;state.textSize=3.2;
+  video.src=state.url;video.load();previewInner.classList.add('loaded');$('emptyState').hidden=true;
+  $('projectName').textContent=file.name;$('overlayPreview').textContent='';$('textTrack').textContent='أضف عنوانًا من لوحة النصوص';$('audioTrack').textContent='مسار صوت الفيديو';
+  $('muteBtn').textContent='♫';setReady(false);toast('تم تحميل الفيديو. جهّز لمستك الإبداعية ☕🐱');
+  setPanel('Filters');
+}
+function onMetadata(){
+  state.duration=Number.isFinite(video.duration)?video.duration:0;state.end=state.duration;
+  $('totalTime').textContent=fmt(state.duration);$('resolution').textContent=`${video.videoWidth} × ${video.videoHeight}`;
+  $('seek').max=state.duration||1;$('trimStart').max=state.duration;$('trimEnd').max=state.duration;
+  $('trimStart').value=0;$('trimEnd').value=state.duration;setReady(true);updateTimeline();updateTrimLabels();applyVideoStyle();
+}
+function updateTimeline(){
+  const d=state.duration;
+  $('rulerQuarter').textContent=fmt(d*.25);
+  $('rulerHalf').textContent=fmt(d*.5);
+  $('rulerThree').textContent=fmt(d*.75);
+  $('rulerEnd').textContent=fmt(d);
+  if(state.file){
+    $('videoTrack').innerHTML='';
+    const clip=document.createElement('div');
+    clip.className='video-clip';
+    const label=document.createElement('span');
+    label.textContent=state.file.name;
+    clip.append(label);
+    $('videoTrack').append(clip);
+  }
+}
+function updateTrimLabels(){$('startLabel').textContent=fmt(state.start);$('endLabel').textContent=fmt(state.end);}
+function applyVideoStyle(){
+  // Live CSS filters can stall hardware-decoded video on some Android browsers.
+  // Keep playback smooth; the full filter stack is restored when playback pauses
+  // and is still applied to every exported frame.
+  video.style.filter=video.paused ? cssFilter() : 'none';
+  video.playbackRate=state.speed;
+  video.muted=state.muted;
+  $('overlayPreview').textContent=state.text; $('overlayPreview').style.left=state.textX+'%'; $('overlayPreview').style.top=state.textY+'%'; $('overlayPreview').style.right='auto'; $('overlayPreview').style.bottom='auto'; $('overlayPreview').style.transform='translate(-50%,-50%)'; $('overlayPreview').style.fontSize=Math.max(10, (video.clientWidth||640)*state.textSize/100)+'px';
+}
+function updateClock(){const t=video.currentTime||0;$('currentTime').textContent=fmt(t);$('seek').value=t;if(state.duration>0&&t>=state.end-.03){video.pause();$('playBtn').textContent='▶';cancelAnimationFrame(state.raf);}else if(!video.paused){state.raf=requestAnimationFrame(updateClock);}}
+async function togglePlay(){if(!state.file)return;if(video.paused){if(video.currentTime<state.start||video.currentTime>=state.end)video.currentTime=state.start;try{await video.play();$('playBtn').textContent='Ⅱ';cancelAnimationFrame(state.raf);state.raf=requestAnimationFrame(updateClock);}catch(e){toast('تعذر تشغيل الفيديو: '+e.message);}}else{video.pause();$('playBtn').textContent='▶';cancelAnimationFrame(state.raf);}}
+function resetAdjustments(){
+  // Reset every editable setting while keeping the currently loaded source video.
+  if(!canEdit())return;
+  cancelAnimationFrame(state.raf);
+  state.filter='Original';
+  state.brightness=100; state.contrast=100; state.saturation=100;
+  state.speed=1; state.muted=false; state.text=''; state.textX=50; state.textY=85; state.textSize=3.2;
+  state.start=0; state.end=state.duration;
+  if(state.file){
+    try{video.currentTime=0;}catch(_){}
+    $('trimStart').value=0; $('trimEnd').value=state.duration;
+    $('seek').value=0; $('currentTime').textContent=fmt(0);
+  }
+  $('textTrack').textContent='أضف عنوانًا من لوحة النصوص';
+  $('audioTrack').textContent='مسار صوت الفيديو';
+  $('overlayPreview').textContent='';
+  $('projectName').textContent=state.file?state.file.name:'مشروع جديد';
+  $('muteBtn').textContent='♫'; $('playBtn').textContent='▶';
+  updateTrimLabels();
+  applyVideoStyle();
+  renderPanel();
+  toast('تمت إعادة ضبط كل التعديلات والقص والنص والصوت.');
+}
+function controlMarkup(key,label,min,max,step,unit=''){return `<div class="control"><div><label for="${key}">${label}</label><b id="${key}Value">${state[key]}${unit}</b></div><input id="${key}" type="range" min="${min}" max="${max}" step="${step}" value="${state[key]}"></div>`;}
+function renderPanel(){
+  const panel=state.panel;let title='',desc='',content='';
+  if(panel==='Filters'){
+    title='🎨 الفلاتر';desc='اختار اللمسة اللونية اللي تناسب حكاية الفيديو.';
+    content=`<div class="filter-grid">${filterNames.map((name,i)=>`<button class="filter-card ${state.filter===name?'selected':''}" data-filter="${name}"><span class="filter-thumb filter-${i}">${['◌','☀','☕','❄','▧','◐','✧','◩'][i]}</span>${filters[name].name}${state.filter===name?'<span class="selected-mark">✓</span>':''}</button>`).join('')}</div>`;
+  } else if(panel==='Effects'){
+    title='✨ التأثيرات';desc='اختار تأثيرًا لونيًا سريعًا، وتقدر تعدّل شدته من الضبط.';
+    content=`<div class="effect-list">${[['Cinematic','🎬','سينمائي','ألوان غنية وتباين ناعم'],['Dream','💫','حالم','إضاءة ناعمة وألوان مشرقة'],['Vintage','📼','ريترو','دفء ولمسة كلاسيكية'],['Noir','🌑','Noir','أبيض وأسود بتباين قوي'],['Warm','🌅','غروب دافئ','درجات ذهبية مريحة'],['Cool','🌊','أزرق بارد','إحساس هادئ وبارد']].map(([f,ico,n,d])=>`<button class="effect-row" data-filter="${f}"><span class="effect-icon">${ico}</span><span><b>${n}</b><small>${d}</small></span>${state.filter===f?'✓':'＋'}</button>`).join('')}</div>`;
+  } else if(panel==='Adjust'){
+    title='☷ ضبط الصورة';desc='تحكم في الإضاءة والألوان وسرعة الفيديو.';
+    content=controlMarkup('brightness','السطوع',30,180,1,'%')+controlMarkup('contrast','التباين',30,180,1,'%')+controlMarkup('saturation','التشبع',0,200,1,'%')+controlMarkup('speed','سرعة الفيديو',.25,2,.05,'×')+'<button class="reset-control" id="resetAdjust">↶ إعادة ضبط القيم</button>';
+    } else if(panel==='Text'){
+    title='T النصوص';desc='اكتب النص وحدد مكانه وحجمه، وسيتم دمجه داخل الفيديو المُصدّر.';
+    content=`<label class="muted" for="textInput">نص العنوان</label><input class="text-field" id="textInput" maxlength="120" placeholder="اكتب عنوان الفيديو..." value="${escapeHTML(state.text)}"><div class="control"><div><label for="textX">الموضع الأفقي</label><b id="textXValue">${Math.round(state.textX)}%</b></div><input id="textX" type="range" min="5" max="95" step="1" value="${state.textX}"></div><div class="control"><div><label for="textY">الموضع الرأسي</label><b id="textYValue">${Math.round(state.textY)}%</b></div><input id="textY" type="range" min="5" max="95" step="1" value="${state.textY}"></div><div class="control"><div><label for="textSize">حجم الخط</label><b id="textSizeValue">${state.textSize.toFixed(1)}%</b></div><input id="textSize" type="range" min="0.8" max="8" step="0.1" value="${state.textSize}"></div><div class="presets"><button data-text="لحظة تستحق التذكر ✨">✨ لحظة تستحق التذكر</button><button data-text="يوم جميل ☀">☀ يوم جميل</button><button data-text="CoffeeCat • My Story">☕ CoffeeCat • My Story</button></div><button class="reset-control" id="clearText">حذف النص</button>`;
+  } else if(panel==='Audio'){
+    title='♫ الصوت';desc='تحكم في صوت الفيديو الأصلي أثناء المعاينة والتصدير.';
+    content=`<button class="effect-row" id="toggleMute"><span class="effect-icon">${state.muted?'🔇':'🔊'}</span><span><b>${state.muted?'تشغيل الصوت':'كتم الصوت'}</b><small>الصوت الأصلي للفيديو</small></span><span>${state.muted?'×':'✓'}</span></button><div class="notice">ملاحظة: إضافة ملفات موسيقى خارجية ومزج مسارات صوت متعددة غير متاحة في الإصدار الحالي.</div>`;
+  } else if(panel==='Trim'){
+    title='⌁ قص الفيديو';desc='حدد نقطة البداية والنهاية للجزء الذي تريد تصديره.';
+    content=`<div class="control"><div><label for="panelStart">بداية المقطع</label><b id="panelStartValue">${fmt(state.start)}</b></div><input id="panelStart" type="range" min="0" max="${state.duration||100}" step=".05" value="${state.start}" ${state.file?'':'disabled'}></div><div class="control"><div><label for="panelEnd">نهاية المقطع</label><b id="panelEndValue">${fmt(state.end)}</b></div><input id="panelEnd" type="range" min="0" max="${state.duration||100}" step=".05" value="${state.end}" ${state.file?'':'disabled'}></div><div class="notice">مدة الجزء المحدد: <b id="trimDuration">${fmt(Math.max(0,state.end-state.start))}</b></div>`;
+  } else {
+    title='▧ الوسائط';desc='ارفع فيديو من جهازك لبدء التحرير.';
+    content='<button class="button button-primary wide" id="panelUpload">＋ اختيار فيديو</button><div class="notice">يدعم المحرر ملفات الفيديو التي يستطيع متصفحك تشغيلها.</div>';
+  }
+  $('panelContent').innerHTML=`<div class="panel-title"><span>${title}</span></div><p class="panel-desc">${desc}</p>${content}`;
+  $('panelContent').querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{if(!canEdit())return;state.filter=b.dataset.filter;applyVideoStyle();renderPanel();toast('تم تطبيق فلتر '+filters[state.filter].name);}));
+  const bindRange=(id,key,unit='')=>{const el=$(id);if(!el)return;el.addEventListener('input',()=>{if(!canEdit()){el.value=state[key];return;}state[key]=Number(el.value);const val=$(id+'Value');if(val)val.textContent=state[key]+unit;applyVideoStyle();});};
+  bindRange('brightness','brightness','%');bindRange('contrast','contrast','%');bindRange('saturation','saturation','%');bindRange('speed','speed','×');
+  if($('resetAdjust'))$('resetAdjust').addEventListener('click',resetAdjustments);
+  if($('textInput'))$('textInput').addEventListener('input',e=>{if(!canEdit()){e.target.value=state.text;return;}state.text=e.target.value;applyVideoStyle();$('textTrack').textContent=state.text||'أضف عنوانًا من لوحة النصوص';});
+  const bindTextRange=(id,key,suffix='%',digits=0)=>{const el=$(id);if(!el)return;el.addEventListener('input',()=>{if(!canEdit()){el.value=state[key];return;}state[key]=Number(el.value);const val=$(id+'Value');if(val)val.textContent=(digits?state[key].toFixed(digits):Math.round(state[key]))+suffix;applyVideoStyle();});};
+  bindTextRange('textX','textX','%',0);bindTextRange('textY','textY','%',0);bindTextRange('textSize','textSize','%',1);
+  $('panelContent').querySelectorAll('[data-text]').forEach(b=>b.addEventListener('click',()=>{if(!canEdit())return;state.text=b.dataset.text;applyVideoStyle();renderPanel();$('textTrack').textContent=state.text;}));
+  if($('clearText'))$('clearText').addEventListener('click',()=>{if(!canEdit())return;state.text='';applyVideoStyle();renderPanel();$('textTrack').textContent='أضف عنوانًا من لوحة النصوص';});
+  if($('toggleMute'))$('toggleMute').addEventListener('click',()=>{state.muted=!state.muted;applyVideoStyle();$('muteBtn').textContent=state.muted?'×':'♫';renderPanel();});
+  if($('panelStart'))$('panelStart').addEventListener('input',e=>{if(!canEdit()){e.target.value=state.start;return;}setStart(Number(e.target.value));});
+  if($('panelEnd'))$('panelEnd').addEventListener('input',e=>{if(!canEdit()){e.target.value=state.end;return;}setEnd(Number(e.target.value));});
+  if($('panelUpload'))$('panelUpload').addEventListener('click',()=>fileInput.click());
+}
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function setStart(v){
+  const upper=Math.max(0,state.end-.1);
+  state.start=Math.max(0,Math.min(v,upper));
+  $('trimStart').value=state.start;
+  const panelSlider=$('panelStart'); if(panelSlider)panelSlider.value=state.start;
+  const panelValue=$('panelStartValue'); if(panelValue)panelValue.textContent=fmt(state.start);
+  updateTrimLabels();
+  if(state.file&&video.currentTime<state.start)video.currentTime=state.start;
+  updateTrimDurationNotice();
+}
+function setEnd(v){
+  const lower=Math.min(state.duration,state.start+.1);
+  state.end=Math.min(state.duration,Math.max(v,lower));
+  $('trimEnd').value=state.end;
+  const panelSlider=$('panelEnd'); if(panelSlider)panelSlider.value=state.end;
+  const panelValue=$('panelEndValue'); if(panelValue)panelValue.textContent=fmt(state.end);
+  updateTrimLabels();
+  if(state.file&&video.currentTime>state.end)video.currentTime=state.end;
+  updateTrimDurationNotice();
+}
+function updateTrimDurationNotice(){
+  const node=$('trimDuration');
+  if(node)node.textContent=fmt(Math.max(0,state.end-state.start));
+}
+async function exportVideo(){
+  if(!state.file){toast('ارفع فيديو الأول علشان نبدأ التصدير.');return;}
+  if(state.exporting){return;}
+  if(!window.MediaRecorder||!HTMLCanvasElement.prototype.captureStream){toast('المتصفح لا يدعم تصدير الفيديو. جرّب Chrome حديث.');return;}
+  if(state.end<=state.start){toast('حدد جزءًا صالحًا من الفيديو للقص.');return;}
+  state.exporting=true;
+  $('exportBtn').disabled=$('exportSide').disabled=true;
+  $('exportBtn').textContent='جاري التصدير 0%';
+  toast('جاري التصدير… سيظهر التحميل بعد اكتمال الملف فقط.');
+
+  const old={time:video.currentTime,muted:video.muted,rate:video.playbackRate,filter:video.style.filter};
+  let canvas=null,ctx=null,stream=null,recorder=null,rafId=0,watchdog=0,done=false,aborted=false,rejectFinished=null;
+  try{
+    // Prevent giant 4K canvases from consuming the whole phone RAM/CPU.
+    const srcW=video.videoWidth||1280, srcH=video.videoHeight||720;
+    const maxDim=960, scale=Math.min(1,maxDim/Math.max(srcW,srcH));
+    canvas=document.createElement('canvas');
+    canvas.width=Math.max(2,Math.round(srcW*scale));
+    canvas.height=Math.max(2,Math.round(srcH*scale));
+    ctx=canvas.getContext('2d',{alpha:false,desynchronized:true});
+    if(!ctx)throw new Error('تعذر إنشاء مساحة التصدير');
+
+    video.pause();
+    await new Promise((resolve,reject)=>{
+      let settled=false;
+      const finish=(fn)=>{if(settled)return;settled=true;video.removeEventListener('seeked',check);video.removeEventListener('loadeddata',check);video.removeEventListener('canplay',check);video.removeEventListener('error',bad);clearTimeout(t);fn();};
+      const check=()=>{
+        if(video.readyState>=2 && Math.abs(video.currentTime-state.start)<0.15) finish(resolve);
+      };
+      const bad=()=>finish(()=>reject(new Error('تعذر تجهيز إطار الفيديو للتصدير. جرّب إعادة تحميل المقطع.')));
+      const t=setTimeout(()=>finish(()=>reject(new Error('انتهت مهلة تجهيز الفيديو قبل التصدير.'))),10000);
+      video.addEventListener('seeked',check);
+      video.addEventListener('loadeddata',check);
+      video.addEventListener('canplay',check);
+      video.addEventListener('error',bad,{once:true});
+      video.currentTime=state.start;
+      check();
+    });
+
+    video.muted=state.muted;
+    video.playbackRate=Math.max(.25,Math.min(2,state.speed));
+    stream=canvas.captureStream(20);
+    if(!state.muted&&typeof video.captureStream==='function'){
+      try{video.captureStream().getAudioTracks().forEach(t=>stream.addTrack(t));}catch(_){/* video-only export remains valid */}
+    }
+    const mime=['video/webm;codecs=vp9','video/webm;codecs=vp8','video/webm'].find(t=>MediaRecorder.isTypeSupported(t))||'';
+    recorder=new MediaRecorder(stream,mime?{mimeType:mime,videoBitsPerSecond:2400000,audioBitsPerSecond:96000}:{videoBitsPerSecond:2400000});
+    const chunks=[];
+    const finished=new Promise((resolve,reject)=>{
+      rejectFinished=reject;
+      recorder.ondataavailable=e=>{if(e.data&&e.data.size)chunks.push(e.data);};
+      recorder.onerror=e=>reject(e.error||new Error('فشل مسجل الفيديو داخل المتصفح.'));
+      recorder.onstop=()=>{
+        const blob=new Blob(chunks,{type:recorder.mimeType||'video/webm'});
+        if(blob.size) resolve(blob);
+        else reject(new Error('المتصفح أنهى التسجيل بدون بيانات فيديو.'));
+      };
+    });
+
+    let lastMediaTime=video.currentTime;
+    let lastWall=performance.now();
+    let lastProgress=-1;
+    const updateProgress=()=>{
+      const total=Math.max(.001,state.end-state.start);
+      const p=Math.max(0,Math.min(100,Math.round(((video.currentTime-state.start)/total)*100)));
+      if(p!==lastProgress){lastProgress=p;$('exportBtn').textContent=`جاري التصدير ${p}%`;$('statusMessage').textContent=`تصدير الفيديو… ${p}%`;}
+    };
+    const drawFrame=()=>{
+      if(aborted||done)return;
+      try{
+        ctx.filter=cssFilter();
+        ctx.drawImage(video,0,0,canvas.width,canvas.height);
+        ctx.filter='none';
+        if(state.text){
+          const size=Math.max(14,canvas.width*(state.textSize/100));
+          const x=canvas.width*(state.textX/100), y=canvas.height*(state.textY/100);
+          ctx.save();ctx.font=`800 ${size}px system-ui, sans-serif`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.lineJoin='round';ctx.lineWidth=Math.max(2,size*.08);ctx.strokeStyle='rgba(0,0,0,.82)';ctx.fillStyle='#fff';
+          const maxW=canvas.width*.9;
+          if(ctx.measureText(state.text).width<=maxW){ctx.strokeText(state.text,x,y,maxW);ctx.fillText(state.text,x,y,maxW);}
+          else{const words=state.text.split(/\s+/),lines=[];let line='';for(const w of words){const test=line?line+' '+w:w;if(ctx.measureText(test).width>maxW&&line){lines.push(line);line=w;}else line=test;}if(line)lines.push(line);const lh=size*1.2;const top=y-((lines.length-1)*lh/2);lines.slice(0,5).forEach((ln,i)=>{const yy=top+i*lh;ctx.strokeText(ln,x,yy,maxW);ctx.fillText(ln,x,yy,maxW);});}
+          ctx.restore();
+        }
+        updateProgress();
+        if(video.currentTime>=state.end-0.02||video.ended){
+          done=true;
+          if(recorder.state!=='inactive'){try{recorder.requestData();}catch(_){} recorder.stop();}
+          return;
+        }
+        const now=performance.now();
+        if(video.currentTime>lastMediaTime+0.001){lastMediaTime=video.currentTime;lastWall=now;}
+        else if(now-lastWall>18000){aborted=true;throw new Error('التصدير توقف لأن الجهاز لم يعد يعالج الإطارات. لم يتم إنشاء ملف ناقص.');}
+        if(typeof video.requestVideoFrameCallback==='function') rafId=video.requestVideoFrameCallback(()=>drawFrame());
+        else rafId=requestAnimationFrame(drawFrame);
+      }catch(e){
+        aborted=true;
+        if(recorder&&recorder.state!=='inactive'){try{recorder.stop();}catch(_){} }
+        if(rejectFinished) rejectFinished(e instanceof Error?e:new Error(String(e)));
+      }
+    };
+
+    recorder.start(500);
+    await video.play();
+    drawFrame();
+    watchdog=setInterval(()=>{
+      if(!done&&!aborted&&performance.now()-lastWall>20000){
+        aborted=true;video.pause();if(recorder&&recorder.state!=='inactive'){try{recorder.stop();}catch(_){}}}
+    },1000);
+
+    const blob=await finished;
+    clearInterval(watchdog);
+    // Some mobile browsers can raise the stall/watchdog flag after MediaRecorder
+    // has already finalized a playable recording. Trust the finalized Blob itself:
+    // never discard a non-empty recording solely because that flag was set.
+    if(!blob || blob.size===0)throw new Error('المتصفح لم يُنتج ملف فيديو. جرّب متصفحًا حديثًا أو فيديو آخر.');
+    aborted=false;
+
+    // Download happens only after the recorder reaches the actual end.
+    const outUrl=URL.createObjectURL(blob);
+    const filename=`CoffeeCat-${Date.now()}.webm`;
+    const a=document.createElement('a');a.href=outUrl;a.download=filename;a.rel='noopener';a.style.position='fixed';a.style.left='-9999px';document.body.appendChild(a);
+    // Trigger the browser download as soon as the recorder has finalized the Blob.
+    a.click();
+    // Keep the object URL alive longer because mobile browsers may defer download handling.
+    setTimeout(()=>{a.remove();URL.revokeObjectURL(outUrl);},10*60*1000);
+    $('exportBtn').textContent='✓ تم التصدير';
+    toast('اكتمل إنشاء الفيديو. بدأ تنزيل الملف 🎉');
+  }catch(err){
+    toast('لم يكتمل التصدير: '+(err?.message||'خطأ غير معروف'));
+  }finally{
+    clearInterval(watchdog);
+    if(rafId&&typeof video.cancelVideoFrameCallback==='function'){try{video.cancelVideoFrameCallback(rafId);}catch(_){} }
+    if(rafId&&typeof video.cancelVideoFrameCallback!=='function')cancelAnimationFrame(rafId);
+    if(recorder&&recorder.state!=='inactive'){try{recorder.stop();}catch(_){} }
+    if(stream)stream.getTracks().forEach(t=>{try{t.stop();}catch(_){}});
+    video.pause();video.muted=old.muted;video.playbackRate=old.rate;video.style.filter=old.filter;
+    try{video.currentTime=Math.min(old.time,state.duration||old.time);}catch(_){}
+    state.exporting=false;$('exportBtn').disabled=$('exportSide').disabled=!state.file;$('exportBtn').textContent='⇩ تصدير الفيديو';$('playBtn').textContent='▶';applyVideoStyle();
+  }
+}
+$('uploadMain').addEventListener('click',()=>fileInput.click());$('addMedia').addEventListener('click',()=>fileInput.click());$('emptyTrack').addEventListener('click',()=>fileInput.click());fileInput.addEventListener('change',e=>{chooseFile(e.target.files?.[0]);e.target.value='';});
+$('exportBtn').addEventListener('click',exportVideo);$('exportSide').addEventListener('click',exportVideo);$('playBtn').addEventListener('click',togglePlay);
+$('seek').addEventListener('input',e=>{if(state.file){video.currentTime=Number(e.target.value);$('currentTime').textContent=fmt(video.currentTime);}});
+$('muteBtn').addEventListener('click',()=>{state.muted=!state.muted;applyVideoStyle();$('muteBtn').textContent=state.muted?'×':'♫';});
+$('backBtn').addEventListener('click',()=>{if(state.file){video.currentTime=state.start;$('currentTime').textContent=fmt(state.start);}});
+$('trimStart').addEventListener('input',e=>{if(!canEdit()){e.target.value=state.start;return;}setStart(Number(e.target.value));});$('trimEnd').addEventListener('input',e=>{if(!canEdit()){e.target.value=state.end;return;}setEnd(Number(e.target.value));});
+$('resetBtn').addEventListener('click',resetAdjustments);$('fitBtn').addEventListener('click',()=>{if(!canEdit())return;if(state.file){state.filter='Original';state.brightness=state.contrast=state.saturation=100;applyVideoStyle();renderPanel();toast('تمت إعادة ضبط المعاينة.');}});
+video.addEventListener('loadedmetadata',onMetadata);video.addEventListener('timeupdate',()=>{if(video.paused){$('currentTime').textContent=fmt(video.currentTime);$('seek').value=video.currentTime;}if(state.duration&&video.currentTime>=state.end){video.pause();$('playBtn').textContent='▶';}});
+video.addEventListener('play',()=>{
+  video.style.filter='none';
+  cancelAnimationFrame(state.raf);
+  state.raf=requestAnimationFrame(updateClock);
+});
+video.addEventListener('pause',()=>{
+  video.style.filter=cssFilter();
+  $('playBtn').textContent='▶';
+  cancelAnimationFrame(state.raf);
+});
+document.querySelectorAll('[data-panel]').forEach(b=>b.addEventListener('click',()=>setPanel(b.dataset.panel)));
+setPanel('Filters');
+})();</script>
+</body>
+</html>
